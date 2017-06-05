@@ -27,17 +27,23 @@ export const modeSetDelete = () =>({
 
 //REDUCERS
 
+export enum Mode {
+  NORMAL,
+  ADDING,
+  CHANGING
+};
+
 export const mode = (state: string = 'NORMAL', action) => {
 
   switch(action.type){
   case MODE_SET_NORMAL:
   case MODE_SET_CANCELING:
   case MODE_SET_DELETE:
-    return 'NORMAL'
+    return Mode.NORMAL
   case MODE_SET_ADDING:
-    return 'ADDING';
+    return Mode.ADDING;
   case MODE_SET_CHANGING:
-    return 'CHANGING';
+    return Mode.CHANGING;
   default:
     return state;
   }

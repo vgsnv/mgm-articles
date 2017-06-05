@@ -8,7 +8,7 @@ import { modeSetAdding, modeSetChanging, modeSetCanceling, modeSetDelete } from 
 type MapStateToProps = Props;
 
 const mapStateToProps = ({app}): MapStateToProps => ({
-  articlesMode: app.mode
+  mode: app.mode
 });
 
 type MapDispatchToProps = Dispatch;

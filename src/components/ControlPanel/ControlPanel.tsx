@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import * as css from './ControlPanel.styl';
+
 import Button from 'components/General/Button/Button';
+import { Mode } from 'store/app/mode';
 
 export interface Props {
-  articlesMode: string;
+  mode: Mode;
 }
 
 export interface Dispatch {
@@ -23,7 +24,7 @@ export class ControlPanel extends React.Component<Props & Dispatch, any>{
       onClickChange,
       onClickCancel,
       onClickDelete,
-      articlesMode,
+      mode,
     } = this.props;
 
     const addBtn = {
@@ -48,9 +49,9 @@ export class ControlPanel extends React.Component<Props & Dispatch, any>{
 
     return(<div className={css.controlPanel}>
       <Button {...addBtn}/>
-      {articlesMode !== 'CHANGING' && <Button {...cngBtn}/>}
-      {articlesMode === 'CHANGING' && <Button {...cclBtn}/>}
-      {articlesMode === 'CHANGING' && <Button {...delBtn}/>}
+      {mode !== Mode.CHANGING && <Button {...cngBtn}/>}
+      {mode === Mode.CHANGING && <Button {...cclBtn}/>}
+      {mode === Mode.CHANGING && <Button {...delBtn}/>}
     </div>);
   }
 };

@@ -11,7 +11,9 @@ export const articlesRemove = (id: string) => ({
   data: id
 });
 
-export const articles = (articles: Array<string> = [], action) => {
+const defaultArticles = ['19df4', '19df3', '19df5'];
+
+export const articles = (articles: Array<string> = defaultArticles, action) => {
 
   switch(action.type){
     case ARTICLES_ADD:
