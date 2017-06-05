@@ -4,18 +4,12 @@ interface Article {
   readonly value: number;
 };
 
-const ARTICLES_ADD = 'ARTICLES_ADD';
+const ARTICLES_ADD = 'DB/ARTICLES_ADD';
 
 export const articlesAdd = (article: Article) => ({
   type: ARTICLES_ADD,
   data: article
 });
-
-const DefaultArticle: Article = {
-  id: '00001',
-  title: 'newArticle',
-  value: 900,
-}
 
 export interface Articles {
   [key: string]: Article
