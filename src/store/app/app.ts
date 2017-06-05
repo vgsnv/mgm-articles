@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import { articles } from './articles';
+import { mode } from './mode';
 
 const app = combineReducers({
-  articles
+  articles,
+  mode,
 })
 
 export default app;
