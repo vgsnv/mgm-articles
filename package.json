@@ -1,0 +1,42 @@
+{
+  "name": "mgm-articles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app": "webpack --watch",
+    "srv": "nodemon srv/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vgsnv/MgmArticles.git"
+  },
+  "author": "vgsnv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vgsnv/MgmArticles/issues"
+  },
+  "homepage": "https://github.com/vgsnv/MgmArticles#readme",
+  "devDependencies": {
+    "@types/react": "^15.0.23",
+    "@types/react-dom": "^15.5.0",
+    "awesome-typescript-loader": "^3.1.2",
+    "css-loader": "^0.28.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "style-loader": "^0.16.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "typescript": "^2.2.2",
+    "typings-for-css-modules-loader": "^1.5.0",
+    "uuid": "^3.0.1",
+    "webpack": "^2.3.2"
+  },
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
