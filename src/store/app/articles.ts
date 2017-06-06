@@ -41,7 +41,7 @@ export const articles = (articles: Articles = defaultArticles, action) => {
     case ARTICLES_SELECT:
       return {...articles, [action.data]: {...articles[action.data], isSelect: !articles[action.data].isSelect } }
     case ARTICLES_REMOVE:
-      return _.pickBy(articles, article => article.isSelect)
+      return _.omitBy(articles, article => article.isSelect)
     default:
       return articles;
   }
