@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { ArticleList, Props, Dispatch } from './Articles';
-import { articles } from 'store/app/articles'
+import { articles, articlesSelect } from 'store/app/articles'
 
 type MapStateToProps = Props;
 
@@ -17,7 +17,7 @@ type MapDispatchToProps = Dispatch;
 const mapDispatchToProps = (dispatch): MapDispatchToProps =>({
   onClickTitle: () => {console.log('Order by Title')},
   onClickValue: () => {console.log('Order by Value')},
-  // articlesSelect: (key) => {dispatch(articlesSelect(key))}
+  articlesSelect: (key) => {dispatch(articlesSelect(key))},
 })
 
 const ArticlesCont = connect<MapStateToProps, MapDispatchToProps, {} >(mapStateToProps, mapDispatchToProps)(ArticleList);

@@ -2,17 +2,22 @@ import * as React from 'react';
 import * as css from './Articles.styl';
 
 import { Articles as Entities } from 'store/db/articles';
+import { Articles as Articles } from 'store/app/articles';
+
 import { Mode } from 'store/app/mode';
+
+import SelectItem from 'components/General/SelectItem/SelectItem'
 
 export interface Props{
   entities: Entities,
-  articles: Array<string>,
+  articles: Articles,
   mode: Mode,
 };
 
 export interface Dispatch{
   onClickTitle: () => void;
   onClickValue: () => void;
+  articlesSelect: (key: string) => void;
 };
 
 interface State{
@@ -44,21 +49,25 @@ export class ArticleList extends React.Component<Props & Dispatch, State> {
       entities,
       articles,
       mode,
+      articlesSelect,
     } = this.props;
 
-    return articles.map( id => {
+    return Object.keys(articles).map(key => {
+
+      const selectItemClick = () =>{
+        articlesSelect(key);
+      }
 
       return(
-        <tr key={id} className={css.article}>
+        <tr key={key} className={css.article}>
           {mode === Mode.CHANGING && 
             <td className={css.articleDelete}>
-              hello
+              <SelectItem  selectStatus = {articles[key].isSelect} onClick = { selectItemClick }/>
             </td>}
-          <td className={css.artilceTitle} >{entities[id].title}</td>
-          <td className={css.artilceValue}>{entities[id].value}</td>
+          <td className={css.artilceTitle} >{entities[key].title} {articles[key].isSelect}</td>
+          <td className={css.artilceValue}>{entities[key].value}</td>
         </tr>);
-
-    });
+    })
     
   };
 
