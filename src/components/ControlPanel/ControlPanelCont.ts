@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { ControlPanel, Props, Dispatch } from './ControlPanel';
 
-import { modeSetAdding, modeSetChanging, modeSetCanceling, modeSetDelete } from "store/app/mode";
+import { modeSetNormal, modeSetAdding, modeSetChanging, modeSetCanceling, modeSetDelete } from "store/app/mode";
+import { articlesRemove } from 'store/app/articles';
 
 type MapStateToProps = Props;
 
@@ -13,11 +14,18 @@ const mapStateToProps = ({app}): MapStateToProps => ({
 
 type MapDispatchToProps = Dispatch;
 
+function deleteArticles (){
+  return(dispatch) => {
+    dispatch(modeSetNormal());
+    dispatch(articlesRemove());
+  }
+}
+
 const mapDispatchToProps = (dispatch): MapDispatchToProps =>({
   onClickAdd: () => dispatch(modeSetAdding()),
   onClickChange: () => dispatch(modeSetChanging()),
   onClickCancel: () => dispatch(modeSetCanceling()),
-  onClickDelete: () => dispatch(modeSetDelete()),
+  onClickDelete: () => dispatch(deleteArticles()),
 })
 
 const ControlPanelCont = connect<MapStateToProps, MapDispatchToProps, {} >(mapStateToProps, mapDispatchToProps)(ControlPanel);
