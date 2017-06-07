@@ -28,4 +28,4 @@ ReactDOM.render(
 );
 
 store.dispatch(dbArticlesAdd({id: '1905', title: 'Печеньки', value: 500}));
-store.dispatch(appArticlesAdd({id: '1905', isSelect: true}));
+store.dispatch(appArticlesAdd({id: '1905', isSelect: false}));
