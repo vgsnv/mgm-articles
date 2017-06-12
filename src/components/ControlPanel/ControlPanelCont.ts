@@ -14,11 +14,9 @@ const mapStateToProps = ({app}): MapStateToProps => ({
 
 type MapDispatchToProps = Dispatch;
 
-function deleteArticles (){
-  return(dispatch) => {
-    dispatch(modeSetNormal());
-    dispatch(articlesRemove());
-  }
+const deleteArticles = () => (dispatch) =>{
+  dispatch(modeSetNormal());
+  dispatch(articlesRemove());
 }
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps =>({

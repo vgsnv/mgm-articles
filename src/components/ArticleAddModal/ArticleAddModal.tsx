@@ -4,14 +4,21 @@ import * as cssRoot from 'components/Root.styl';
 
 import Button from 'components/General/Button/Button';
 import Row from 'components/General/Row/Row';
+import InputText from 'components/General/InputText/InputText';
+import InputNumber from 'components/General/InputNumber/InputNumber';
+
 import { Mode } from 'store/app/mode';
+import { Article } from 'store/app/articleNew'
 
 export interface Props {
-  mode: Mode
+  mode: Mode,
+  articleNew: Article,
 }
 
 export interface Dispatch {
-  onClickAdd: () => void;
+  onClickAdd: (data) => void;
+  articleNewUpdTitle: (data: string) => void;
+  articleNewUpdValue: (data: number) => void;
 }
 
 export interface State {
@@ -21,24 +28,15 @@ export interface State {
 
 export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: '',
-      value: 0
-    };
+  private handleOnClickAdd = () => {
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
+    const {
+      articleNew,
+      onClickAdd,
+    } = this.props;
+    
+    onClickAdd(articleNew);
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'text' ? target.value : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
   }
 
   render(){
@@ -46,29 +44,35 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
     const {
       mode,
       onClickAdd,
+      articleNew,
+      articleNewUpdTitle,
+      articleNewUpdValue,
     } = this.props;
+
+    const handleOnClickAdd = this.handleOnClickAdd;
 
     const addBtn = {
       title: 'Добавить',
-      onClick: onClickAdd
+      onClick: () => handleOnClickAdd(),
     };
 
     return(<div>{ mode === Mode.ADDING && <div id={css.articleAddModal}>
+
       <Row>
-        <input
-          name="title"
-          type="text"
-          value={this.state.title}
-          onChange={this.handleInputChange} />
+        <InputText
+          value = {articleNew.title}
+          maxLength = {25}
+          onChange = {(value) => articleNewUpdTitle(value)}
+          />
       </Row>
 
       <Row>
-        <input
-          name="value"
-          type="text"
-          value={this.state.value}
-          onChange={this.handleInputChange} />  
-      </Row>  
+        <InputNumber
+          value = {articleNew.value}
+          maxLength = {25}
+          onChange = {(value)=> articleNewUpdValue(value)}
+          />
+      </Row>
       <Row>
         <Button {...addBtn}/>
       </Row>
