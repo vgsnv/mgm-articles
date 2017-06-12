@@ -59,6 +59,7 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
     return(<div>{ mode === Mode.ADDING && <div id={css.articleAddModal}>
 
       <Row>
+        <label> Title </label>
         <InputText
           value = {articleNew.title}
           maxLength = {25}
@@ -67,6 +68,7 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
       </Row>
 
       <Row>
+        <label> Value </label>
         <InputNumber
           value = {articleNew.value}
           maxLength = {25}
