@@ -18,6 +18,7 @@ export interface Props {
 
 export interface Dispatch {
   onClickAdd: (data) => void;
+  onClickCcl: () => void;
   articleNewUpdTitle: (data: string) => void;
   articleNewUpdValue: (data: number) => void;
 }
@@ -40,6 +41,16 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
 
   }
 
+  private handleOnClickCcl = () => {
+
+    const {
+      onClickCcl,
+    } = this.props;
+    
+    onClickCcl();
+
+  }
+
   render(){
 
     const {
@@ -52,6 +63,7 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
     } = this.props;
 
     const handleOnClickAdd = this.handleOnClickAdd;
+    const handleOnClickCcl = this.handleOnClickCcl;
 
     const addBtn = {
       title: 'Добавить',
@@ -59,8 +71,16 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
       type: showButton ? ButtonType.ENABLED : ButtonType.DISABLED,
     };
 
-    return(<div>{ mode === Mode.ADDING && <div id={css.articleAddModal}>
+    const cclBtn = {
+      title: 'Отмена',
+      onClick: () => handleOnClickCcl(),
+      type: ButtonType.ENABLED,
+    };
 
+    return(<div>{ mode === Mode.ADDING && <div id={css.articleAddModal}>
+      <Row>
+        <Button {...cclBtn}/>
+      </Row>
       <Row>
         <label> Title </label>
         <InputText

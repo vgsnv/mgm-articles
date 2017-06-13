@@ -19,7 +19,9 @@ export enum ButtonType {
 export default class Button extends React.Component<Props, State> {
 
   private getTypeClassName(){
+
     const type = this.props.type;
+
     switch(type){
       case ButtonType.ENABLED:
         return css.btnEnabled
@@ -28,6 +30,7 @@ export default class Button extends React.Component<Props, State> {
       default:
         return css.btnEnabled
     }
+    
   }
 
   render(){

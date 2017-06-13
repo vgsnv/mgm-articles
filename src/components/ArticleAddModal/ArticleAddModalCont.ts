@@ -29,10 +29,16 @@ const addArticle = (data) => (dispatch) =>{
  
 }
 
+const cclArticleNew = () => (dispatch) =>{
+  dispatch(articleNewReset());
+  dispatch(modeSetNormal());
+}
+
 type MapDispatchToProps = Dispatch;
 
 const mapDispatchToProps = (dispatch): MapDispatchToProps =>({
   onClickAdd: (data) => dispatch(addArticle(data)),
+  onClickCcl: () => dispatch(cclArticleNew()),
   articleNewUpdTitle: (data: string) => dispatch(articleNewUpdTitle(data)),
   articleNewUpdValue: (data: number) => dispatch(articleNewUpdValue(data)),
 })
