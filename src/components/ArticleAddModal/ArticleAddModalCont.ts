@@ -13,7 +13,8 @@ type MapStateToProps = Props;
 
 const mapStateToProps = ({app, db}): MapStateToProps => ({
   mode: app.mode,
-  articleNew: app.articleNew
+  articleNew: app.articleNew,
+  showButton: !!app.articleNew.title && !!app.articleNew.value
 });
 
 const addArticle = (data) => (dispatch) =>{

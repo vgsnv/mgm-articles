@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as css from './ArticleAddModal.styl';
 import * as cssRoot from 'components/Root.styl';
 
-import Button from 'components/General/Button/Button';
+import Button, { ButtonType } from 'components/General/Button/Button';
 import Row from 'components/General/Row/Row';
 import InputText from 'components/General/InputText/InputText';
 import InputNumber from 'components/General/InputNumber/InputNumber';
@@ -13,6 +13,7 @@ import { Article } from 'store/app/articleNew'
 export interface Props {
   mode: Mode,
   articleNew: Article,
+  showButton: boolean
 }
 
 export interface Dispatch {
@@ -47,13 +48,15 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
       articleNew,
       articleNewUpdTitle,
       articleNewUpdValue,
+      showButton
     } = this.props;
 
     const handleOnClickAdd = this.handleOnClickAdd;
 
     const addBtn = {
       title: 'Добавить',
-      onClick: () => handleOnClickAdd(),
+      onClick: showButton? () => handleOnClickAdd() : () => {},
+      type: showButton ? ButtonType.ENABLED : ButtonType.DISABLED,
     };
 
     return(<div>{ mode === Mode.ADDING && <div id={css.articleAddModal}>

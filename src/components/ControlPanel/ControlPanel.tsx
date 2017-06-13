@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as css from './ControlPanel.styl';
 
-import Button from 'components/General/Button/Button';
+import Button, { ButtonType } from 'components/General/Button/Button';
 import { Mode } from 'store/app/mode';
 
 export interface Props {
@@ -29,22 +29,26 @@ export class ControlPanel extends React.Component<Props & Dispatch, any>{
 
     const addBtn = {
       title: 'Добавить',
-      onClick: onClickAdd
+      onClick: onClickAdd,
+      type: ButtonType.ENABLED,
     };
 
     const cngBtn = {
       title: 'Изменить',
-      onClick: onClickChange
+      onClick: onClickChange,
+      type: ButtonType.ENABLED,
     };
 
     const cclBtn = {
       title: 'Отменить',
-      onClick: onClickCancel
+      onClick: onClickCancel,
+      type: ButtonType.ENABLED,
     };
 
     const delBtn = {
       title: 'Удалить',
-      onClick: onClickDelete
+      onClick: onClickDelete,
+      type: ButtonType.ENABLED,
     };
 
     return(<div className={css.controlPanel}>
