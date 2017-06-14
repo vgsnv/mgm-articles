@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import * as css from './Articles.styl';
 
 import { Articles as Entities } from 'store/db/articles';
@@ -64,9 +65,12 @@ export class ArticleList extends React.Component<Props & Dispatch, State> {
             <td className={css.articleDelete}>
               <SelectItem  selectStatus = {articles[key].isSelect} onClick = { selectItemClick }/>
             </td>}
-          <td className={css.artilceTitle} >{entities[key].title} {articles[key].isSelect}</td>
+          <td className={css.artilceTitle} >
+            {entities[key].title} <Link to={`/article/${key}`}>{key}</Link>
+          </td>
           <td className={css.artilceValue}>{entities[key].value}</td>
-        </tr>);
+        </tr>
+              );
     })
     
   };

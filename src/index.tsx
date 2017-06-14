@@ -1,6 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Router, Route } from 'react-router';
+
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 
 import { createBrowserHistory } from 'history';
 
@@ -17,6 +21,7 @@ import reducers from 'store/store';
 
 import { articlesAdd as dbArticlesAdd } from 'store/db/articles';
 import { articlesAdd as appArticlesAdd } from 'store/app/articles';
+import ArticleEditModal from 'components/ArticleEditModal/ArticleEditModal';
 
 const loggerMiddleware = createLogger()
 
@@ -30,12 +35,14 @@ const history = syncHistoryWithStore(createBrowserHistory(), store);
 ReactDOM.render(
   <Provider store={store}>
     <Router history = {history}>
-      <Route path='/' component={Root}>
-      </Route>  
+      <div>
+        <Route exact path="/" component={Root}/>
+        <Route path="/article/:id" component={ArticleEditModal}/>
+      </div>
     </Router>
   </Provider>,
   document.getElementById('root')
 );
 
-store.dispatch(dbArticlesAdd({id: '1905', title: 'Печеньки', value: 500}));
-store.dispatch(appArticlesAdd({id: '1905', isSelect: false}));
+// store.dispatch(dbArticlesAdd({id: '1905', title: 'Печеньки', value: 500}));
+// store.dispatch(appArticlesAdd({id: '1905', isSelect: false}));
