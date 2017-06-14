@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as css from './ControlPanel.styl';
 
+import Row from 'components/General/Row/Row';
+
 import Button, { ButtonType } from 'components/General/Button/Button';
 import { Mode } from 'store/app/mode';
 
@@ -51,11 +53,13 @@ export class ControlPanel extends React.Component<Props & Dispatch, any>{
       type: ButtonType.ENABLED,
     };
 
-    return(<div className={css.controlPanel}>
-      <Button {...addBtn}/>
-      {mode !== Mode.CHANGING && <Button {...cngBtn}/>}
-      {mode === Mode.CHANGING && <Button {...cclBtn}/>}
-      {mode === Mode.CHANGING && <Button {...delBtn}/>}
-    </div>);
+    return(<Row>
+      <div id={css.controlPanel}>
+        <Button {...addBtn}/>
+        {mode !== Mode.CHANGING && <Button {...cngBtn}/>}
+        {mode === Mode.CHANGING && <Button {...cclBtn}/>}
+        {mode === Mode.CHANGING && <Button {...delBtn}/>}
+      </div>
+    </Row>);
   }
 };

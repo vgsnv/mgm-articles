@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import * as css from './Articles.styl';
 
+import Row from 'components/General/Row/Row';
+
 import { Articles as Entities } from 'store/db/articles';
 import { Articles as Articles } from 'store/app/articles';
 
@@ -86,10 +88,12 @@ export class ArticleList extends React.Component<Props & Dispatch, State> {
     const getArticleListHeader = this.getArticleListHeader();
     const getArticles = this.getArticles();
 
-    return(<table id={css.articleList}>
-      {getArticleListHeader}
-      <tbody>{ getArticles }</tbody>
-    </table>);
+    return(<Row>
+        <table id={css.articleList}>
+          {getArticleListHeader}
+          <tbody>{ getArticles }</tbody>
+        </table>
+    </Row>);
 
   };
 };

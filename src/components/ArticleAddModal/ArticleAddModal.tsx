@@ -81,8 +81,9 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
       <Row>
         <Button {...cclBtn}/>
       </Row>
+
       <Row>
-        <label> Title </label>
+        <label>Title</label>
         <InputText
           value = {articleNew.title}
           maxLength = {25}
@@ -91,7 +92,7 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
       </Row>
 
       <Row>
-        <label> Value </label>
+        <label>Value</label>
         <InputNumber
           value = {articleNew.value}
           maxLength = {25}

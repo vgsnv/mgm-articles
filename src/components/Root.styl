@@ -1,7 +1,17 @@
 *
   box-sizing border-box
 
+pd = 8px;
+hpd = pd/2;
+mainColor = #ccc
+secondColor = darken(mainColor, 40)
+
 #main
-  width 98%
-  margin 0 1%
+  width 100%
+  margin 0
+  padding pd pd
   position relative
+  
+table, th, td
+  border 1px solid secondColor
+  padding pd hpd

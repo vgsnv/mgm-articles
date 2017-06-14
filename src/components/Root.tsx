@@ -9,7 +9,7 @@ import ArticleAddModal from 'components/ArticleAddModal/ArticleAddModalCont';
 class App extends React.Component<{}, {}> {
 
   render(){
-    return(<main classID={css.main}>
+    return(<main id={css.main} >
       <ControlPanel/>
       <SummaryPanel summary={500}/>
       <Articles/>

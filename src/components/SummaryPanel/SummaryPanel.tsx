@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as css from './SummaryPanel.styl';
 
+import Row from 'components/General/Row/Row';
+
 export interface Props{
   summary: number;
 };
@@ -21,10 +23,16 @@ export class SummaryPanel extends React.Component<Props, State> {
       summary,
     } = this.props;
 
-    return(<div id={css.summaryPanel}>
-      <p id = { css.summaryTitle }>Итого</p>
+    return(
+            <Row>
+              <div id={css.summaryPanel}>
+              <p id = { css.summaryTitle }>Итого</p>
       <p id = { css.summarySummary }>{ summary }</p>
-    </div>);
+      </div>
+      </Row>
+
+
+    );
 
   };
 };
