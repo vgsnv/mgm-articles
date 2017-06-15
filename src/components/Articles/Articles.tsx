@@ -62,17 +62,20 @@ export class ArticleList extends React.Component<Props & Dispatch, State> {
       }
 
       return(
-        <tr key={key} className={css.article}>
-          {mode === Mode.CHANGING && 
-            <td className={css.articleDelete}>
-              <SelectItem  selectStatus = {articles[key].isSelect} onClick = { selectItemClick }/>
-            </td>}
-          <td className={css.artilceTitle} >
-            {entities[key].title} <Link to={`/article/${key}`}>{key}</Link>
-          </td>
-          <td className={css.artilceValue}>{entities[key].value}</td>
-        </tr>
-              );
+      <tr
+        key={key}
+        className={css.article}>
+        {mode === Mode.CHANGING &&  
+        <td className={css.articleDelete}>
+          <SelectItem
+            selectStatus = {articles[key].isSelect}
+            onClick = { selectItemClick }/>
+        </td>}
+        <td className={css.artilceTitle} >
+          <Link to={`/article/${key}`}>{entities[key].title}</Link>
+        </td>
+        <td className={css.artilceValue}>{entities[key].value}</td> 
+      </tr>);
     })
     
   };

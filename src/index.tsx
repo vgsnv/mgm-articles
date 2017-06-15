@@ -21,7 +21,7 @@ import reducers from 'store/store';
 
 import { articlesAdd as dbArticlesAdd } from 'store/db/articles';
 import { articlesAdd as appArticlesAdd } from 'store/app/articles';
-import ArticleEditModal from 'components/ArticleEditModal/ArticleEditModal';
+import ArticleEditModal from 'components/ArticleEditModal/ArticleEditModalCont';
 
 const loggerMiddleware = createLogger()
 

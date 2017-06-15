@@ -5,9 +5,15 @@ interface Article {
 };
 
 const ARTICLES_ADD = 'DB/ARTICLES_ADD';
+const ARTICLES_UPD = 'DB/ARTICLES_UPD';
 
 export const articlesAdd = (article: Article) => ({
   type: ARTICLES_ADD,
+  data: article
+});
+
+export const articlesUpd = (article: Article) => ({
+  type: ARTICLES_UPD,
   data: article
 });
 
@@ -25,6 +31,7 @@ export const articles = (articles: Articles = initialArticles, action) => {
 
   switch(action.type){
     case ARTICLES_ADD:
+    case ARTICLES_UPD:
       return {...articles, [action.data.id]: action.data};
     default:
       return articles;

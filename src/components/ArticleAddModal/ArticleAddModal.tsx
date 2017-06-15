@@ -8,7 +8,7 @@ import InputText from 'components/General/InputText/InputText';
 import InputNumber from 'components/General/InputNumber/InputNumber';
 
 import { Mode } from 'store/app/mode';
-import { Article } from 'store/app/articleNew'
+import { Article } from 'store/app/articleNew';
 
 export interface Props {
   mode: Mode,
