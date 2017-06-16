@@ -2,14 +2,12 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import * as css from './Articles.styl';
 
-import Row from 'components/General/Row/Row';
+import * as uc from 'components/General';
 
 import { Articles as Entities } from 'store/db/articles';
 import { Articles as Articles } from 'store/app/articles';
 
 import { Mode } from 'store/app/mode';
-
-import SelectItem from 'components/General/SelectItem/SelectItem'
 
 export interface Props{
   entities: Entities,
@@ -67,7 +65,7 @@ export class ArticleList extends React.Component<Props & Dispatch, State> {
         className={css.article}>
         {mode === Mode.CHANGING &&  
         <td className={css.articleDelete}>
-          <SelectItem
+          <uc.SelectItem
             selectStatus = {articles[key].isSelect}
             onClick = { selectItemClick }/>
         </td>}
@@ -91,12 +89,12 @@ export class ArticleList extends React.Component<Props & Dispatch, State> {
     const getArticleListHeader = this.getArticleListHeader();
     const getArticles = this.getArticles();
 
-    return(<Row>
+    return(<uc.Row>
         <table id={css.articleList}>
           {getArticleListHeader}
           <tbody>{ getArticles }</tbody>
         </table>
-    </Row>);
+    </uc.Row>);
 
   };
 };

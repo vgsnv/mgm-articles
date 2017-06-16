@@ -2,10 +2,7 @@ import * as React from 'react';
 import * as css from './ArticleAddModal.styl';
 import * as cssRoot from 'components/Root.styl';
 
-import Button, { ButtonType } from 'components/General/Button/Button';
-import Row from 'components/General/Row/Row';
-import InputText from 'components/General/InputText/InputText';
-import InputNumber from 'components/General/InputNumber/InputNumber';
+import * as uc from 'components/General';
 
 import { Mode } from 'store/app/mode';
 import { Article } from 'store/app/articleNew';
@@ -68,40 +65,40 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
     const addBtn = {
       title: 'Добавить',
       onClick: showButton? () => handleOnClickAdd() : () => {},
-      type: showButton ? ButtonType.ENABLED : ButtonType.DISABLED,
+      type: showButton ? uc.ButtonType.ENABLED : uc.ButtonType.DISABLED,
     };
 
     const cclBtn = {
       title: 'Отмена',
       onClick: () => handleOnClickCcl(),
-      type: ButtonType.ENABLED,
+      type: uc.ButtonType.ENABLED,
     };
 
     return(<div>{ mode === Mode.ADDING && <div id={css.articleAddModal}>
-      <Row>
-        <Button {...cclBtn}/>
-      </Row>
+      <uc.Row>
+        <uc.Button {...cclBtn}/>
+      </uc.Row>
 
-      <Row>
+      <uc.Row>
         <label>Title</label>
-        <InputText
+        <uc.InputText
           value = {articleNew.title}
           maxLength = {25}
           onChange = {(value) => articleNewUpdTitle(value)}
           />
-      </Row>
+      </uc.Row>
 
-      <Row>
+      <uc.Row>
         <label>Value</label>
-        <InputNumber
+        <uc.InputNumber
           value = {articleNew.value}
           maxLength = {25}
           onChange = {(value)=> articleNewUpdValue(value)}
           />
-      </Row>
-      <Row>
-        <Button {...addBtn}/>
-      </Row>
+      </uc.Row>
+      <uc.Row>
+        <uc.Button {...addBtn}/>
+      </uc.Row>
     </div>}</div>);
   }
 };

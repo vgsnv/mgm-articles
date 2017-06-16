@@ -1,10 +1,7 @@
 import * as React from 'react';
 import * as css from './ArticleEdit.styl';
 
-import Button, { ButtonType } from 'components/General/Button/Button';
-import Row from 'components/General/Row/Row';
-import InputText from 'components/General/InputText/InputText';
-import InputNumber from 'components/General/InputNumber/InputNumber';
+import * as uc from 'components/General';
 
 import { Article } from 'store/app/articleNew'
 
@@ -26,9 +23,9 @@ export class ArticleEdit extends React.Component<Props & Dispatch, State>{
       articleNew
     } = this.props;
 
-    return(<Row>
+    return(<uc.Row>
         <div className={css.btn}>{articleNew.title} {articleNew.value}</div>
       
-      </Row>);
+      </uc.Row>);
   }
 };

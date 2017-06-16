@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as css from './ControlPanel.styl';
 
-import Row from 'components/General/Row/Row';
+import * as uc from 'components/General';
 
-import Button, { ButtonType } from 'components/General/Button/Button';
 import { Mode } from 'store/app/mode';
 
 export interface Props {
@@ -32,34 +31,34 @@ export class ControlPanel extends React.Component<Props & Dispatch, any>{
     const addBtn = {
       title: 'Добавить',
       onClick: onClickAdd,
-      type: ButtonType.ENABLED,
+      type: uc.ButtonType.ENABLED,
     };
 
     const cngBtn = {
       title: 'Изменить',
       onClick: onClickChange,
-      type: ButtonType.ENABLED,
+      type: uc.ButtonType.ENABLED,
     };
 
     const cclBtn = {
       title: 'Отменить',
       onClick: onClickCancel,
-      type: ButtonType.ENABLED,
+      type: uc.ButtonType.ENABLED,
     };
 
     const delBtn = {
       title: 'Удалить',
       onClick: onClickDelete,
-      type: ButtonType.ENABLED,
+      type: uc.ButtonType.ENABLED,
     };
 
-    return(<Row>
+    return(<uc.Row>
       <div id={css.controlPanel}>
-        <Button {...addBtn}/>
-        {mode !== Mode.CHANGING && <Button {...cngBtn}/>}
-        {mode === Mode.CHANGING && <Button {...cclBtn}/>}
-        {mode === Mode.CHANGING && <Button {...delBtn}/>}
+        <uc.Button {...addBtn}/>
+        {mode !== Mode.CHANGING && <uc.Button {...cngBtn}/>}
+        {mode === Mode.CHANGING && <uc.Button {...cclBtn}/>}
+        {mode === Mode.CHANGING && <uc.Button {...delBtn}/>}
       </div>
-    </Row>);
+    </uc.Row>);
   }
 };
