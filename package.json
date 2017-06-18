@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "app": "webpack --watch",
+    "build": "webpack",
     "srv": "nodemon srv/server.js"
   },
   "repository": {

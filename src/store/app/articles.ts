@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
 
+const ARTICLES_LOAD = 'APP/ARTICLES_LOAD';
 const ARTICLES_ADD = 'APP/ARTICLES_ADD';
 const ARTICLES_SELECT = 'APP/ARTICLES_SELECT';
 const ARTICLES_REMOVE = 'APP/ARTICLES_REMOVE';
@@ -12,6 +13,11 @@ interface Article {
 export interface Articles {
   [key: string]: Article
 };
+
+export const articlesLoad = (articles: Articles) => ({
+  type: ARTICLES_LOAD,
+  data: articles
+});
 
 export const articlesAdd = (data: Article) => ({
   type: ARTICLES_ADD,
@@ -28,14 +34,16 @@ export const articlesRemove= () => ({
 });
 
 const defaultArticles = {
-  '19df4': { id: '19df4', isSelect: false },
-  '19df3': { id: '19df4', isSelect: false },
-  '19df5': { id: '19df4', isSelect: false },
+  // '19df4': { id: '19df4', isSelect: false },
+  // '19df3': { id: '19df4', isSelect: false },
+  // '19df5': { id: '19df4', isSelect: false },
 };
 
 export const articles = (articles: Articles = defaultArticles, action) => {
 
   switch(action.type){
+    case ARTICLES_LOAD:
+      return {...action.data};
     case ARTICLES_ADD:
       return {...articles, [action.data.id]: action.data};
     case ARTICLES_SELECT:

@@ -4,8 +4,14 @@ interface Article {
   readonly value: number;
 };
 
+const ARTICLES_LOAD = 'DB/ARTICLES_LOAD';
 const ARTICLES_ADD = 'DB/ARTICLES_ADD';
 const ARTICLES_UPD = 'DB/ARTICLES_UPD';
+
+export const articlesLoad = (articles: Articles) => ({
+  type: ARTICLES_LOAD,
+  data: articles
+});
 
 export const articlesAdd = (article: Article) => ({
   type: ARTICLES_ADD,
@@ -22,9 +28,9 @@ export interface Articles {
 }
 
 const initialArticles: Articles = {
-  '19df4': { id: '19df4', title: 'Макароны', value: 130 },
-  '19df3': { id: '19df3', title: 'Сосиски', value: 240 },
-  '19df5': { id: '19df5', title: 'Доширак', value: 20 },
+  // '19df4': { id: '19df4', title: 'Макароны', value: 130 },
+  // '19df3': { id: '19df3', title: 'Сосиски', value: 240 },
+  // '19df5': { id: '19df5', title: 'Доширак', value: 20 },
 };
 
 export const articles = (articles: Articles = initialArticles, action) => {
@@ -33,6 +39,8 @@ export const articles = (articles: Articles = initialArticles, action) => {
     case ARTICLES_ADD:
     case ARTICLES_UPD:
       return {...articles, [action.data.id]: action.data};
+    case ARTICLES_LOAD:
+      return action.data;
     default:
       return articles;
   }
