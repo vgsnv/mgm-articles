@@ -30,8 +30,6 @@ const store = createStore(
   applyMiddleware(thunk, loggerMiddleware),
 );
 
-import axios from 'axios';
-
 const fetchArticles = () => {
   return fetch('/node').then(response => {
       return response.json();
