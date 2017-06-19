@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as css from './ArticleAddModal.styl';
-import * as cssRoot from 'components/Root.styl';
 
 import * as uc from 'components/General';
 

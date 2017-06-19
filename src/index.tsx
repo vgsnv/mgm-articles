@@ -12,15 +12,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import Root from 'views/Root';
-
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
-import reducers from 'store/store';
+import reducers, { createFetchInitialDataAction } from 'store/store';
 
-import { articlesAdd as dbArticlesAdd, articlesLoad as dbArticlesLoad } from 'store/db/articles';
-import { articlesAdd as appArticlesAdd, articlesLoad as appArticlesLoad } from 'store/app/articles';
+import Root from 'views/Root';
 import Article from 'views/Article';
 
 const loggerMiddleware = createLogger()
@@ -29,39 +26,6 @@ const store = createStore(
   reducers,
   applyMiddleware(thunk, loggerMiddleware),
 );
-
-const fetchArticles = () => {
-  return fetch('/node').then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
-}
-
-const createFetchInitialDataAction = () => (dispatch) => {
-
-    fetchArticles().then(articles => {
-
-      dispatch(dbArticlesLoad(articles));
-
-      //todo: Поправить
-      let ArticleApp = {};
-
-      Object.keys(articles).forEach(( value, index, array )=>{
-
-        ArticleApp[value] = {
-          id: value.toString(),
-          isSelect: false,
-        }
-      });
-
-      dispatch(appArticlesLoad(ArticleApp));
-
-    }).catch(error => {
-      throw(error);
-    });
-
-}
 
 const history = syncHistoryWithStore(createBrowserHistory(), store);
 
