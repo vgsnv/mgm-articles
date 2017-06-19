@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import Root from 'components/Root';
+import Root from 'views/Root';
 
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -21,7 +21,7 @@ import reducers from 'store/store';
 
 import { articlesAdd as dbArticlesAdd, articlesLoad as dbArticlesLoad } from 'store/db/articles';
 import { articlesAdd as appArticlesAdd, articlesLoad as appArticlesLoad } from 'store/app/articles';
-import ArticleEditModal from 'components/ArticleEditModal/ArticleEditModalCont';
+import Article from 'views/Article';
 
 const loggerMiddleware = createLogger()
 
@@ -70,7 +70,7 @@ ReactDOM.render(
     <Router history = {history}>
       <div>
         <Route exact path="/" component={Root}/>
-        <Route path="/article/:id" component={ArticleEditModal}/>
+        <Route path="/article/:id" component={Article}/>
       </div>
     </Router>
   </Provider>,
