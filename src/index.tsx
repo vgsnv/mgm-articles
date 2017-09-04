@@ -1,16 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {
-  BrowserRouter as Router,
-  Route,
-} from 'react-router-dom';
-
-import { createBrowserHistory } from 'history';
-
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { syncHistoryWithStore } from 'react-router-redux';
+
+import { BrowserRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom'
 
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -27,18 +22,29 @@ const store = createStore(
   applyMiddleware(thunk, loggerMiddleware),
 );
 
-const history = syncHistoryWithStore(createBrowserHistory(), store);
-
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history = {history}>
-      <div>
-        <Route exact path="/" component={Root}/>
-        <Route path="/article/:id" component={Article}/>
-      </div>
-    </Router>
-  </Provider>,
-  document.getElementById('root')
+const Main = () => (
+  <main>
+    <Switch>
+      <Route exact path='/' component={Root} />
+      <Route path="/article/:id" component={Article} />
+    </Switch>
+  </main>
 );
+
+const App = () => (
+  <div>
+    <Main />
+  </div>
+);
+
+ReactDOM.render((
+
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider> 
+
+), document.getElementById('root'))
 
 store.dispatch(createFetchInitialDataAction());

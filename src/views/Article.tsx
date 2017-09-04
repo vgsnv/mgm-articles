@@ -10,6 +10,11 @@ import Header from 'components/Header/HeaderCont';
 class App extends React.Component<{}, {}> {
 
   render(){
+
+    const articleId = this.props.match.params.id;
+
+    console.log('ArticleId', articleId);
+
     return(<main id={css.main} >
       <Header/>
     </main>);
