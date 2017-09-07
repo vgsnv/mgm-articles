@@ -4,18 +4,18 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import { BrowserRouter } from 'react-router-dom';
-import { Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 import reducers, { createFetchInitialDataAction } from 'store/store';
 
-import Root from 'views/Root';
+import Home from 'views/Home';
 import Article from 'views/Article';
+import Header from 'components/Header/HeaderCont';
 
-const loggerMiddleware = createLogger()
+const loggerMiddleware = createLogger();
 
 const store = createStore(
   reducers,
@@ -23,16 +23,15 @@ const store = createStore(
 );
 
 const Main = () => (
-  <main>
     <Switch>
-      <Route exact path='/' component={Root} />
+      <Route exact path='/' component={Home} />
       <Route path="/article/:id" component={Article} />
     </Switch>
-  </main>
 );
 
 const App = () => (
   <div>
+    <Header/>
     <Main />
   </div>
 );
@@ -43,7 +42,7 @@ ReactDOM.render((
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider> 
+  </Provider>
 
 ), document.getElementById('root'))
 
