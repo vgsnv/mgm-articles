@@ -7,17 +7,17 @@ import { Articles as Entities } from 'store/db/articles';
 import { Articles as Articles } from 'store/app/articles';
 
 import { Mode } from 'store/app/mode';
+import { Article } from 'store/db/articles';
 
 export interface Props {
-  entities: Array<{}>
-  match?: any
+  entity: Article
 };
 
 export interface Dispatch {
 };
 
 interface State {
- 
+
 };
 
 export class ArticleDetail extends React.Component<Props & Dispatch, State> {
@@ -25,15 +25,22 @@ export class ArticleDetail extends React.Component<Props & Dispatch, State> {
   render() {
 
     const {
-      entities,
-      match,
+      entity,
     } = this.props
 
-    console.info('this.props', this.props, entities)
+    return (<section>
+      {!!entity &&
+        <div>
+          <uc.Row>
+            <label>Заголовок</label>
+            <p>{entity.title}</p> 
+          </uc.Row>
 
-    return (<uc.Row>
-      <div>Hello {Object.keys(entities).length ? entities[match.params.id].title : 'Hello'}</div>
-    </uc.Row>);
-
+          <uc.Row>
+            <label>Значение</label>
+            <p>{entity.value}</p> 
+          </uc.Row>
+        </div>
+      }</section>);
   };
 };

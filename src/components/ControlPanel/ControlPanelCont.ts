@@ -8,24 +8,24 @@ import { articlesRemove } from 'store/app/articles';
 
 type MapStateToProps = Props;
 
-const mapStateToProps = ({app}): MapStateToProps => ({
+const mapStateToProps = ({ app }): MapStateToProps => ({
   mode: app.mode
 });
 
 type MapDispatchToProps = Dispatch;
 
-const deleteArticles = () => (dispatch) =>{
+const deleteArticles = () => (dispatch) => {
   dispatch(modeSetNormal());
   dispatch(articlesRemove());
 }
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps =>({
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
   onClickAdd: () => dispatch(modeSetAdding()),
   onClickChange: () => dispatch(modeSetChanging()),
   onClickCancel: () => dispatch(modeSetCanceling()),
   onClickDelete: () => dispatch(deleteArticles()),
 })
 
-const ControlPanelCont = connect<MapStateToProps, MapDispatchToProps, {} >(mapStateToProps, mapDispatchToProps)(ControlPanel);
+const ControlPanelCont = connect<MapStateToProps, MapDispatchToProps, {}>(mapStateToProps, mapDispatchToProps)(ControlPanel);
 
 export default ControlPanelCont;

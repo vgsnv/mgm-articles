@@ -23,15 +23,15 @@ const store = createStore(
 );
 
 const Main = () => (
-    <Switch>
-      <Route exact path='/' component={Home} />
-      <Route path="/article/:id" component={Article} />
-    </Switch>
+  <Switch>
+    <Route exact path='/' component={Home} />
+    <Route path="/article/:id" component={Article} />
+  </Switch>
 );
 
 const App = () => (
   <div>
-    <Header/>
+    <Header />
     <Main />
   </div>
 );

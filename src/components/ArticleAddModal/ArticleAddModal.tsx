@@ -32,7 +32,7 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
       articleNew,
       onClickAdd,
     } = this.props;
-    
+
     onClickAdd(articleNew);
 
   }
@@ -42,12 +42,12 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
     const {
       onClickCcl,
     } = this.props;
-    
+
     onClickCcl();
 
   }
 
-  render(){
+  render() {
 
     const {
       mode,
@@ -63,7 +63,7 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
 
     const addBtn = {
       title: 'Добавить',
-      onClick: showButton? () => handleOnClickAdd() : () => {},
+      onClick: showButton ? () => handleOnClickAdd() : () => { },
       type: showButton ? uc.ButtonType.ENABLED : uc.ButtonType.DISABLED,
     };
 
@@ -73,30 +73,30 @@ export class ArticleAddModal extends React.Component<Props & Dispatch, State>{
       type: uc.ButtonType.ENABLED,
     };
 
-    return(<div>{ mode === Mode.ADDING && <div id={css.articleAddModal}>
+    return (<div>{mode === Mode.ADDING && <div id={css.articleAddModal}>
       <uc.Row>
-        <uc.Button {...cclBtn}/>
+        <uc.Button {...cclBtn} />
       </uc.Row>
 
       <uc.Row>
         <label>Title</label>
         <uc.InputText
-          value = {articleNew.title}
-          maxLength = {25}
-          onChange = {(value) => articleNewUpdTitle(value)}
-          />
+          value={articleNew.title}
+          maxLength={25}
+          onChange={(value) => articleNewUpdTitle(value)}
+        />
       </uc.Row>
 
       <uc.Row>
         <label>Value</label>
         <uc.InputNumber
-          value = {articleNew.value}
-          maxLength = {25}
-          onChange = {(value)=> articleNewUpdValue(value)}
-          />
+          value={articleNew.value}
+          maxLength={25}
+          onChange={(value) => articleNewUpdValue(value)}
+        />
       </uc.Row>
       <uc.Row>
-        <uc.Button {...addBtn}/>
+        <uc.Button {...addBtn} />
       </uc.Row>
     </div>}</div>);
   }

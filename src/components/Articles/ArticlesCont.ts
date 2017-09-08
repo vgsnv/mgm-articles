@@ -6,7 +6,7 @@ import { articles, articlesSelect } from 'store/app/articles'
 
 type MapStateToProps = Props;
 
-const mapStateToProps = ({app, db}): MapStateToProps => ({
+const mapStateToProps = ({ app, db }): MapStateToProps => ({
   entities: db.articles,
   articles: app.articles,
   mode: app.mode
@@ -14,12 +14,12 @@ const mapStateToProps = ({app, db}): MapStateToProps => ({
 
 type MapDispatchToProps = Dispatch;
 
-const mapDispatchToProps = (dispatch): MapDispatchToProps =>({
-  onClickTitle: () => {console.log('Order by Title')},
-  onClickValue: () => {console.log('Order by Value')},
-  articlesSelect: (key) => {dispatch(articlesSelect(key))},
+const mapDispatchToProps = (dispatch): MapDispatchToProps => ({
+  onClickTitle: () => { console.log('Order by Title') },
+  onClickValue: () => { console.log('Order by Value') },
+  articlesSelect: (key) => { dispatch(articlesSelect(key)) },
 })
 
-const ArticlesCont = connect<MapStateToProps, MapDispatchToProps, {} >(mapStateToProps, mapDispatchToProps)(ArticleList);
+const ArticlesCont = connect<MapStateToProps, MapDispatchToProps, {}>(mapStateToProps, mapDispatchToProps)(ArticleList);
 
 export default ArticlesCont;

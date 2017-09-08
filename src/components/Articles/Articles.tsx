@@ -9,42 +9,42 @@ import { Articles as Articles } from 'store/app/articles';
 
 import { Mode } from 'store/app/mode';
 
-export interface Props{
+export interface Props {
   entities: Entities,
   articles: Articles,
   mode: Mode,
 };
 
-export interface Dispatch{
+export interface Dispatch {
   onClickTitle: () => void;
   onClickValue: () => void;
   articlesSelect: (key: string) => void;
 };
 
-interface State{
+interface State {
 
 };
 
 export class ArticleList extends React.Component<Props & Dispatch, State> {
 
-  private getArticleListHeader(){
+  private getArticleListHeader() {
 
-      const {
+    const {
         mode,
-        onClickTitle,
-        onClickValue
+      onClickTitle,
+      onClickValue
       } = this.props
 
-      return(<thead id={css.articleListHeader}>
-        <tr>
-          { mode === Mode.CHANGING && <th>Выбрать</th> }
-          <th onClick={onClickTitle} >Заголовок</th>
-          <th onClick={onClickValue} >Значение</th></tr>
-      </thead>);
+    return (<thead id={css.articleListHeader}>
+      <tr>
+        {mode === Mode.CHANGING && <th>Выбрать</th>}
+        <th onClick={onClickTitle} >Заголовок</th>
+        <th onClick={onClickValue} >Значение</th></tr>
+    </thead>);
 
   }
 
-    private getArticles(){
+  private getArticles() {
 
     const {
       entities,
@@ -55,31 +55,31 @@ export class ArticleList extends React.Component<Props & Dispatch, State> {
 
     return Object.keys(articles).map(key => {
 
-      const selectItemClick = () =>{
+      const selectItemClick = () => {
         articlesSelect(key);
       }
 
-      return(
-      <tr
-        key={key}
-        className={css.article}>
-        {mode === Mode.CHANGING &&  
-        <td className={css.articleDelete}>
-          <uc.SelectItem
-            selectStatus = {articles[key].isSelect}
-            onClick = { selectItemClick }/>
-        </td>}
-        <td className={css.artilceTitle} >
-          <Link to={`/article/${key}`}>{entities[key].title}</Link>
-        </td>
-        <td className={css.artilceValue}>{entities[key].value}</td> 
-      </tr>);
+      return (
+        <tr
+          key={key}
+          className={css.article}>
+          {mode === Mode.CHANGING &&
+            <td className={css.articleDelete}>
+              <uc.SelectItem
+                selectStatus={articles[key].isSelect}
+                onClick={selectItemClick} />
+            </td>}
+          <td className={css.artilceTitle} >
+            <Link to={`/article/${key}`}>{entities[key].title}</Link>
+          </td>
+          <td className={css.artilceValue}>{entities[key].value}</td>
+        </tr>);
     })
-    
+
   };
 
-  render(){
-    
+  render() {
+
     const {
       entities,
       articles,
@@ -89,11 +89,11 @@ export class ArticleList extends React.Component<Props & Dispatch, State> {
     const getArticleListHeader = this.getArticleListHeader();
     const getArticles = this.getArticles();
 
-    return(<uc.Row>
-        <table id={css.articleList}>
-          {getArticleListHeader}
-          <tbody>{ getArticles }</tbody>
-        </table>
+    return (<uc.Row>
+      <table id={css.articleList}>
+        {getArticleListHeader}
+        <tbody>{getArticles}</tbody>
+      </table>
     </uc.Row>);
 
   };

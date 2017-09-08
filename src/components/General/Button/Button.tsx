@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as css from './Button.styl';
 
-interface Props{
+interface Props {
   title: string;
   onClick: () => void;
   type: ButtonType;
 };
 
-interface State{
+interface State {
 
 };
 
@@ -18,11 +18,11 @@ export enum ButtonType {
 
 export default class Button extends React.Component<Props, State> {
 
-  private getTypeClassName(){
+  private getTypeClassName() {
 
     const type = this.props.type;
 
-    switch(type){
+    switch (type) {
       case ButtonType.ENABLED:
         return css.btnEnabled
       case ButtonType.DISABLED:
@@ -30,11 +30,11 @@ export default class Button extends React.Component<Props, State> {
       default:
         return css.btnEnabled
     }
-    
+
   }
 
-  render(){
-    
+  render() {
+
     const {
       title,
       onClick,
@@ -42,8 +42,8 @@ export default class Button extends React.Component<Props, State> {
 
     const getTypeClassName = this.getTypeClassName();
 
-    return(
-      <button onClick = { onClick } className={ getTypeClassName }>{ title }</button>
+    return (
+      <button onClick={onClick} className={getTypeClassName}>{title}</button>
     );
 
   };

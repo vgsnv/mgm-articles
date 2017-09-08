@@ -8,8 +8,8 @@ import { withRouter } from 'react-router-dom';
 
 type MapStateToProps = Props;
 
-const mapStateToProps = ({ app, db }): MapStateToProps => ({
-  entities: db.articles
+const mapStateToProps = ({app, db}, { match: { params } }): MapStateToProps => ({
+  entity: db.articles[params.id]
 });
 
 type MapDispatchToProps = Dispatch;

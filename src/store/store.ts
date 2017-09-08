@@ -5,26 +5,26 @@ import { articlesAdd as appArticlesAdd, articlesLoad as appArticlesLoad } from '
 
 export const createFetchInitialDataAction = () => (dispatch) => {
 
-    fetchArticles().then(articles => {
+  fetchArticles().then(articles => {
 
-      dispatch(dbArticlesLoad(articles));
+    dispatch(dbArticlesLoad(articles));
 
-      //todo: Поправить
-      let ArticleApp = {};
+    //todo: Поправить
+    let ArticleApp = {};
 
-      Object.keys(articles).forEach(( value, index, array )=>{
+    Object.keys(articles).forEach((value, index, array) => {
 
-        ArticleApp[value] = {
-          id: value.toString(),
-          isSelect: false,
-        }
-      });
-
-      dispatch(appArticlesLoad(ArticleApp));
-
-    }).catch(error => {
-      throw(error);
+      ArticleApp[value] = {
+        id: value.toString(),
+        isSelect: false,
+      }
     });
+
+    dispatch(appArticlesLoad(ArticleApp));
+
+  }).catch(error => {
+    throw (error);
+  });
 
 };
 

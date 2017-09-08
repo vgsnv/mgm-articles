@@ -18,7 +18,7 @@ export interface Dispatch {
 
 export class ControlPanel extends React.Component<Props & Dispatch, any>{
 
-  render(){
+  render() {
 
     const {
       onClickAdd,
@@ -52,12 +52,12 @@ export class ControlPanel extends React.Component<Props & Dispatch, any>{
       type: uc.ButtonType.ENABLED,
     };
 
-    return(<uc.Row>
+    return (<uc.Row>
       <div id={css.controlPanel}>
-        <uc.Button {...addBtn}/>
-        {mode !== Mode.CHANGING && <uc.Button {...cngBtn}/>}
-        {mode === Mode.CHANGING && <uc.Button {...cclBtn}/>}
-        {mode === Mode.CHANGING && <uc.Button {...delBtn}/>}
+        <uc.Button {...addBtn} />
+        {mode !== Mode.CHANGING && mode !== Mode.ADDING && <uc.Button {...cngBtn} />}
+        {mode === Mode.CHANGING && <uc.Button {...cclBtn} />}
+        {mode === Mode.CHANGING && <uc.Button {...delBtn} />}
       </div>
     </uc.Row>);
   }

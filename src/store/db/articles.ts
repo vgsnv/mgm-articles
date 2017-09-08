@@ -1,4 +1,4 @@
-interface Article {
+export interface Article {
   readonly id: string;
   readonly title: string;
   readonly value: number;
@@ -35,10 +35,10 @@ const initialArticles: Articles = {
 
 export const articles = (articles: Articles = initialArticles, action) => {
 
-  switch(action.type){
+  switch (action.type) {
     case ARTICLES_ADD:
     case ARTICLES_UPD:
-      return {...articles, [action.data.id]: action.data};
+      return { ...articles, [action.data.id]: action.data };
     case ARTICLES_LOAD:
       return action.data;
     default:

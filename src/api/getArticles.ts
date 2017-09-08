@@ -1,7 +1,7 @@
 export default () => {
   return fetch('/node').then(response => {
-      return response.json();
-    }).catch(error => {
-      return error;
-    });
+    return response.json();
+  }).catch(error => {
+    return error;
+  });
 };
